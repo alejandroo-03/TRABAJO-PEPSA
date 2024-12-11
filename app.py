@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template
 from flask import redirect, url_for, render_template, request
+
 #from variables import cargarVariables
 
 app = Flask(__name__)
@@ -23,12 +24,12 @@ def login():
     
     passwd = request.form.get("password")
     
-    if usuario == passwd:
-        error = "Correcto"
+    if usuario != passwd:
+        return render_template("index.html", error="Usuario o contraseña erroneos")
     else:
-        error = "ERROR"
+        return render_template("inicio.html", usuario=usuario)
     
-    return render_template("index.html", error=error)
+    
 
 
 
