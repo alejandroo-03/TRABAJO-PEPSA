@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask, render_template
-from variables import cargarVariables
+#from variables import cargarVariables
 
 app = Flask(__name__)
 
@@ -17,6 +17,6 @@ def inicio():
 #import rutas_juegos
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT'))
+    port = 8080 #int(os.environ.get('PORT'))
     host = os.environ.get('HOST')
     app.run(host=host, port=port)
