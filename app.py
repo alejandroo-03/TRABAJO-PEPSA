@@ -30,6 +30,14 @@ def login():
         return render_template("inicio.html", usuario=usuario)
     
     
+@app.route("/ver", methods = ["GET"])
+def verTablas():
+    
+    datos = bbdd.seleccionarTodo()
+    
+    return render_template("inicio.html", tablas="hola")
+        
+    
 
 
 
