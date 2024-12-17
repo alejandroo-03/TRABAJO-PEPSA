@@ -7,3 +7,13 @@ CREATE TABLE IF NOT EXISTS bicicletas{
     modelo varchar (255) not null, 
     tipo varchar (255) not null, 
 };
+
+CREATE TABLE color (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    cod_hexa VARCHAR (50),
+);
+
+-- Puedes agregar datos iniciales si lo necesitas
+INSERT INTO bicicletas (id, precio, color, modelo, tipo) VALUES ('1', '6500', 'Satin Cooper/Smoke', 'Roubaix SL8 Expert', 'Carretera');
+INSERT INTO color (id, nombre, cod_hexa) VALUES ('1', 'Satin Cooper/Smoke', '#73372d')
