@@ -1,0 +1,8 @@
+# Dockerfile para Apache
+FROM httpd:latest
+
+COPY ./static /usr/local/apache2/htdocs/
+COPY ./app/static /usr/local/apache2/htdocs/api/
+
+RUN echo "ProxyPass /api/ http://python:8080/" >> /usr/local/apache2/conf/httpd.conf && \
+    echo "ProxyPassReverse /api/ http://python:8080/" >> /usr/local/apache2/conf/httpd.conf
