@@ -1,0 +1,33 @@
+#docker-compose-yml
+version: '3'
+services:
+  python:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.python
+    volumes:
+      - ./app:/app
+    networks:
+      - mi_red
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    networks:
+      - mi_red
+
+  apache:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.apache
+    ports:
+      - "7777:80"
+    networks:
+      - mi_red
+
+networks:
+  mi_red:
+    driver: bridge
