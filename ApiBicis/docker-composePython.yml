@@ -41,3 +41,8 @@ services:
         - mariadb
 
         #Meter APACHE
+
+  apache:
+    build: ./apache
+    ports:
+      - 9095:80
