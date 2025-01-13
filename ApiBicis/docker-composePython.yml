@@ -42,6 +42,6 @@ services:
 
         #Meter APACHE
   apache:
-    build: ./apache
+    build: ./Apache
     ports:
       - 9095:80
