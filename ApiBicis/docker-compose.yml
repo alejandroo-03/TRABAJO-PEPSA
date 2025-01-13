@@ -15,6 +15,7 @@ services:
     user: mysql
     ports:
       - 3306:3306
+
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin
@@ -25,8 +26,13 @@ services:
       - 9093:80
     depends_on:
       - mariadb
+
   apache:
     build: ./Apache
     ports:
-      - 9095:80
+      - 9095:80 
+    restart: always
+    depends_on:
+      - mariadb  
+      - phpmyadmin  
     
