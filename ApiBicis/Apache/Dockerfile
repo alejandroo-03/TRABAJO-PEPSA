@@ -4,4 +4,4 @@ RUN apt update && apt upgrade -y
 COPY demo.apache.conf /usr/local/apache2/conf/demo.apache.conf
 RUN echo "Include /usr/local/apache2/conf/demo.apache.conf" \
     >> /usr/local/apache2/conf/httpd.conf
-#COPY Copiamos la carpeta var/www/html
+#COPY ../../templates/index.html /var/www/html
