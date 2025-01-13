@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS bicicletas{
 
 CREATE TABLE IF NOT EXISTS usuarios{
 nombre varchar (255) not null,
-contraseña varchar(18) not null,
+clave varchar(18) not null,
 };
 
 -- Agregamos inserts
@@ -21,8 +21,8 @@ INSERT INTO bicicletas (precio, color, modelo, tipo) VALUES ('9200', 'Negro Carb
 INSERT INTO bicicletas (precio, color, modelo, tipo) VALUES ('6800', 'Azul Marino', 'Canyon Aeroad CF SLX', 'Carretera');
 
 
-INSERT INTO usuarios (nombre,contraseña)VALUES("Alejandro","1234");
-INSERT INTO usuarios (nombre,contraseña)VALUES("Ivan","1234");
-INSERT INTO usuarios (nombre,contraseña)VALUES("Fernando","Clave$1");
-INSERT INTO usuarios (nombre,contraseña)VALUES("Alberto","1234");
-INSERT INTO usuarios (nombre,contraseña)VALUES("Invitado","1234");
+INSERT INTO usuarios (nombre,clave)VALUES("Alejandro","1234");
+INSERT INTO usuarios (nombre,clave)VALUES("Ivan","1234");
+INSERT INTO usuarios (nombre,clave)VALUES("Fernando","Clave$1");
+INSERT INTO usuarios (nombre,clave)VALUES("Alberto","1234");
+INSERT INTO usuarios (nombre,clave)VALUES("Invitado","1234");

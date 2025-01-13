@@ -12,8 +12,10 @@ services:
     volumes:
       - ./mariadb_data:/var/lib/mysql
       - ./Bicicletas.sql:/docker-entrypoint-initdb.d/Bicicletas.sql
-
     user: mysql
+    ports:
+      - 3306:3306
+
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin
@@ -24,24 +26,13 @@ services:
       - 9093:80
     depends_on:
       - mariadb
-  python:
-    build: .
-    container_name: python
-    environment:
-      DB_USERNAME: root
-      DB_PASSWORD: example
-      DB_DATABASE: PEPS
-      DB_HOST: mariadb
-      DB_PORT: 3306
-      PORT: 8080
-      HOST: 0.0.0.0
-    ports:
-      - 9094:8080
-    depends_on:
-        - mariadb
 
-        #Meter APACHE
   apache:
     build: ./Apache
     ports:
-      - 9095:80
+      - 9095:80 
+    restart: always
+    depends_on:
+      - mariadb  
+      - phpmyadmin  
+    

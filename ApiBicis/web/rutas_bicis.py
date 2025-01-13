@@ -1,6 +1,7 @@
+import json
 from flask import request, session
 from __main__ import app
-import web.controlador_bicis as controlador_bicis
+import controlador_bicis as controlador_bicis
 from funciones_auxiliares import Encoder
 
 

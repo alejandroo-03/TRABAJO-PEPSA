@@ -11,9 +11,9 @@ from funciones_auxiliares import Encoder
 def login():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
-        juego_json = request.json
-        username = juego_json['username']
-        password = juego_json['password']
+        bicicleta_json = request.json
+        username = bicicleta_json['username']
+        password = bicicleta_json['password']
         respuesta,code = controlador_usuario.login_usuario(username,password)
         return json.dumps(respuesta, cls = Encoder),code
     else:
@@ -25,10 +25,10 @@ def login():
 def registro():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
-        juego_json = request.json
-        username = juego_json['username']
-        password = juego_json['password']
-        perfil = juego_json['profile']
+        bicicleta_json = request.json
+        username = bicicleta_json['username']
+        password = bicicleta_json['password']
+        perfil = bicicleta_json['profile']
         respuesta,code=controlador_usuario.alta_usuario(username,password,perfil)
         return json.dumps(respuesta, cls = Encoder), code
     else:
