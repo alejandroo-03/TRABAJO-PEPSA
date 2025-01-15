@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS bicicletas (
     tipo VARCHAR(255) NOT NULL
 );
 
+
 CREATE TABLE IF NOT EXISTS usuarios (
     nombre VARCHAR(255) NOT NULL,
     clave VARCHAR(18) NOT NULL
