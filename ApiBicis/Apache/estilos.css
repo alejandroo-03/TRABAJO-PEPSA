@@ -1,0 +1,102 @@
+/* Reseteo básico para asegurar consistencia entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo global del body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Estilo para el título h1 */
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el formulario */
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Estilo para las etiquetas de los campos (usuario, clave) */
+label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+}
+
+/* Estilo para los campos de entrada (usuario y clave) */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Estilo para cuando los campos están en foco */
+input:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Estilo para los botones */
+button {
+    width: 48%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 1%;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para el botón ACCEDER */
+button[type="submit"] {
+    background-color: #0056b3;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #004494;
+}
+
+/* Estilo para el botón CANCELAR */
+button[type="cancel"] {
+    background-color: #ddd;
+    color: #333;
+}
+
+button[type="cancel"]:hover {
+    background-color: #ccc;
+}
+
+/* Estilo para mostrar el mensaje de error */
+#error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
