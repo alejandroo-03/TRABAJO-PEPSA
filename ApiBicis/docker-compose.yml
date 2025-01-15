@@ -6,8 +6,8 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: example
-      MARIADB_USER: agente
-      MARIADB_USER_PASSWORD: 0traClave
+      MARIADB_USER: user
+      MARIADB_PASSWORD: user
       MARIADB_DATABASE: DEATHBIKES
     volumes:
       - ./mariadb_data:/var/lib/mysql:rw
@@ -28,8 +28,8 @@ services:
     build: .
     container_name: python
     environment:
-      DB_USERNAME: agente
-      DB_PASSWORD: 0traClave
+      DB_USERNAME: user
+      DB_PASSWORD: user
       DB_DATABASE: DEATHBIKES
       DB_HOST: mariadb
       DB_PORT: 3306
