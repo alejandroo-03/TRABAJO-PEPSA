@@ -9,10 +9,11 @@ CREATE TABLE IF NOT EXISTS bicicletas (
     tipo VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS usuarios{
-nombre varchar (255) not null,
-clave varchar(18) not null,
-};
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    nombre VARCHAR(255) NOT NULL,
+    clave VARCHAR(18) NOT NULL
+);
 
 -- Agregamos inserts
 INSERT INTO bicicletas (precio, color, modelo, tipo) VALUES ('6500', 'Satin Cooper/Smoke', 'Roubaix SL8 Expert', 'Carretera');
