@@ -6,32 +6,32 @@ def login_usuario(username,password):
     try:
             conexion = obtener_conexion()
             with conexion.cursor() as cursor:
-                 #cursor.execute("SELECT perfil FROM usuarios WHERE usuario = %s and clave= %s",(username,password))
-                 cursor.execute("SELECT perfil FROM usuarios WHERE usuario = '" + username +"' and clave= '" + password + "'")
+                 #cursor.execute("SELECT nombre FROM usuarios WHERE usuario = %s and clave= %s",(username,password))
+                 cursor.execute("SELECT nombre FROM usuarios WHERE nombre = '" + username +"' and clave= '" + password + "'")
                  usuario = cursor.fetchone()
             conexion.close()
             if usuario is None:
                 ret = {"status": "ERROR","mensaje":"Usuario/clave erroneo" }
             else:
                 ret = {"status": "OK" }
-                session["usuario"]=username
-                session["perfil"]=usuario[0]
+                #session["usuario"]=username
+                #session["nombre"]=usuario[0]
             code=200
     except:
           print("Excepcion al validar al usuario")   
           ret={"status":"ERROR"}
           code=500
-          
-def alta_usuario(username,password,perfil):
+    return ret,code      
+def alta_usuario(username,password,nombre):
     try:
         conexion = obtener_conexion()
         with conexion.cursor() as cursor:
-            #cursor.execute("SELECT perfil FROM usuarios WHERE usuario = %s and clave= %s",(username,password))
-             cursor.execute("SELECT perfil FROM usuarios WHERE usuario = '" + username +"' and clave= '" + password + "'")
+            #cursor.execute("SELECT nombre FROM usuarios WHERE usuario = %s and clave= %s",(username,password))
+             cursor.execute("SELECT nombre FROM usuarios WHERE nombre = '" + username +"' and clave= '" + password + "'")
              usuario = cursor.fetchone()
              if usuario is None:
-                print("INSERT INTO usuarios(usuario,clave,perfil) VALUES('"+ username +"','"+  password+"','"+ perfil+"')") 
-                cursor.execute("INSERT INTO usuarios(usuario,clave,perfil) VALUES('"+ username +"','"+  password+"','"+ perfil+"')")
+                print("INSERT INTO usuarios(usuario,clave,nombre) VALUES('"+ username +"','"+  password+"','"+ nombre+"')") 
+                cursor.execute("INSERT INTO usuarios(usuario,clave,nombre) VALUES('"+ username +"','"+  password+"','"+ nombre+"')")
                 if cursor.rowcount == 1:
                     conexion.commit()
                     ret={"status": "OK" }
@@ -47,3 +47,4 @@ def alta_usuario(username,password,perfil):
             print("Excepcion al registrar al usuario")   
             ret={"status":"ERROR"}
             code=500
+    return ret,code
