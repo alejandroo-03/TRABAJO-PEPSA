@@ -32,7 +32,7 @@
                 .then(response => response.json())
                 .then(result => {
                     if (result.status=="OK"){
-                        location.href="/api/login";
+                        location.href="/juegos.html";
                     } else {
                         document.getElementsByClassName("error")[0].style.display="block";
                     }
