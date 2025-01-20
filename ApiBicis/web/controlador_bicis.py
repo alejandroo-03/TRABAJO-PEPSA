@@ -19,7 +19,7 @@ def obtener_bicis():
             cursor.execute("SELECT id, nombre, descripcion, precio,foto FROM bicicletas")
             bicis = cursor.fetchall()
             bicisjson=[]
-            if bici:
+            if bicis:
                 for bici in bicis:
                     bicisjson.append(convertir_bici_a_json(bici))
         conexion.close()

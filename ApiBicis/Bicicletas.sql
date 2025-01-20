@@ -3,10 +3,10 @@ USE DEATHBIKES;
 
 CREATE TABLE IF NOT EXISTS bicicletas (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
     precio DECIMAL(8,2) NOT NULL,
-    color VARCHAR(255) NOT NULL,
-    modelo VARCHAR(255) NOT NULL,
-    tipo VARCHAR(255) NOT NULL
+    foto VARCHAR(255) NOT NULL
 );
 
 
@@ -16,11 +16,14 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 
 -- Agregamos inserts
-INSERT INTO bicicletas (precio, color, modelo, tipo) VALUES ('6500', 'Satin Cooper/Smoke', 'Roubaix SL8 Expert', 'Carretera');
-INSERT INTO bicicletas (precio, color, modelo, tipo) VALUES ('7500', 'Blanco Mate', 'Venge Pro', 'Carretera');
-INSERT INTO bicicletas (precio, color, modelo, tipo) VALUES ('8200', 'Rojo Brillante', 'Tarmac SL7', 'Carretera');
-INSERT INTO bicicletas (precio, color, modelo, tipo) VALUES ('9200', 'Negro Carbono', 'Madone SLR 9', 'Carretera');
-INSERT INTO bicicletas (precio, color, modelo, tipo) VALUES ('6800', 'Azul Marino', 'Canyon Aeroad CF SLX', 'Carretera');
+INSERT INTO bicicletas (nombre, descripcion, precio, foto)
+VALUES 
+    ('Bici de montaña', 'Una bici para senderismo en montaña', 250.00, 'imagen1'),
+    ('Bici de carretera', 'Bici ligera para ciclismo en carretera', 180.00, 'bici2.png'),
+    ('Bici urbana', 'Bici para uso diario en la ciudad', 120.00, 'imagen3'),
+    ('Bici eléctrica', 'Bici con motor eléctrico para facilitar el pedaleo', 600.00, 'imagen4'),
+    ('Bici plegable', 'Bici compacta que se puede plegar para facilitar su transporte', 150.00, 'imagen5');
+
 
 
 INSERT INTO usuarios (nombre, clave) VALUES ('Alejandro', '1234');

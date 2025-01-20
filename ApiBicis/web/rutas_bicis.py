@@ -20,7 +20,7 @@ def guardar_bici():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         bici_json = request.json
-        ret,code=controlador_bicis.insertar_bici(bici_json["nombre"], bici_json["descripcion"], float(bici_json["precio"]), bici_json["foto"])
+        ret,code=controlador_bicis.insertar_bicis(bici_json["nombre"], bici_json["descripcion"], float(bici_json["precio"]), bici_json["foto"])
     else:
         ret={"status":"Bad request"}
         code=401
