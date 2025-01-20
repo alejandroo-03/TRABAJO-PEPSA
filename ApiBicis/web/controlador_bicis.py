@@ -25,7 +25,7 @@ def obtener_bicis():
         conexion.close()
         code=200
     except:
-        print("Excepcion al obtener los juegos", file=sys.stdout)
+        print("Excepcion al obtener los bicis", file=sys.stdout)
         bicisjson=[]
         code=500
     return bicisjson,code
@@ -35,7 +35,7 @@ def obtener_bici_por_id(id):
     try:
         conexion = obtener_conexion()
         with conexion.cursor() as cursor:
-            #cursor.execute("SELECT id, nombre, descripcion, precio,foto FROM juegos WHERE id = %s", (id,))
+            #cursor.execute("SELECT id, nombre, descripcion, precio,foto FROM bicis WHERE id = %s", (id,))
             cursor.execute("SELECT id, nombre, descripcion, precio,foto FROM bicicletas WHERE id =" + id)
             bici = cursor.fetchone()
             if bici is not None:
