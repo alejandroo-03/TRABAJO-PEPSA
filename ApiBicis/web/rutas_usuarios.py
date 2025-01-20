@@ -37,7 +37,8 @@ def registro():
     return json.dumps(ret), code
 
 
-@app.route("/logout",methods=['GET'])
+@app.route("/logout", methods=['GET'])
 def logout():
-    session.clear()
-    return json.dumps({"status":"OK"}),200
+    
+    response = json.dumps({"status": "OK"})
+    return response, 200, {'Content-Type': 'application/json'}
