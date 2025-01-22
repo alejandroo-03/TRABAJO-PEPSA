@@ -36,8 +36,7 @@ services:
       PORT: 8080
       HOST: 0.0.0.0
       PYTHONUNBUFFERED: 1
-    ports:
-      - 9094:8080
+
     depends_on:
         - mariadb
 
@@ -45,4 +44,4 @@ services:
   apache:
     build: ./Apache
     ports:
-      - 9095:80
+      - 7777:80
