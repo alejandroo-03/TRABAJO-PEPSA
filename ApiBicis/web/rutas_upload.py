@@ -14,6 +14,7 @@ def upload():
         upload_path = os.path.join (basepath,'static',user_input) 
         print('lugar' +  upload_path, file=sys.stdout)
         f.save(upload_path)
+        print("guardado", file=sys.stdout)
         return json.dumps({"status": "OK"}),200
     except:
         return json.dumps({"status": "ERROR"}), 500
