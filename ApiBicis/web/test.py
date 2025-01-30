@@ -1,6 +1,5 @@
 import unittest
 
-from rutas_usuarios import logout
 import nuestrasFunciones
 
 class TestBicis(unittest.TestCase):
