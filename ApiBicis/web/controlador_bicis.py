@@ -35,8 +35,8 @@ def obtener_bici_por_id(id):
     try:
         conexion = obtener_conexion()
         with conexion.cursor() as cursor:
-            #cursor.execute("SELECT id, nombre, descripcion, precio,foto FROM bicis WHERE id = %s", (id,))
-            cursor.execute("SELECT id, nombre, descripcion, precio,foto FROM bicicletas WHERE id =" + id)
+            cursor.execute("SELECT id, nombre, descripcion, precio,foto FROM bicicletas WHERE id = %s LIMIT 1", (id,))
+            #cursor.execute("SELECT id, nombre, descripcion, precio,foto FROM bicicletas WHERE id =" + id)
             bici = cursor.fetchone()
             if bici is not None:
                 bicijson = convertir_bici_a_json(bici)

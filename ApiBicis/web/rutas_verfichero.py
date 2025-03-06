@@ -18,3 +18,4 @@ def ver(archivo):
         #    return json.dumps({"status":"ERROR", "mensaje": "El archivo no existe"}),200
     except:
         return json.dumps({"status": "ERROR"}), 500
+    

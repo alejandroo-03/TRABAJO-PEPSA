@@ -6,8 +6,8 @@ def login_usuario(username,password):
     try:
             conexion = obtener_conexion()
             with conexion.cursor() as cursor:
-                 #cursor.execute("SELECT nombre FROM usuarios WHERE usuario = %s and clave= %s",(username,password))
-                 cursor.execute("SELECT nombre FROM usuarios WHERE nombre = '" + username +"' and clave= '" + password + "'")
+                 cursor.execute("SELECT nombre FROM usuarios WHERE nombre= %s and clave= %s",(username,password))
+                 #cursor.execute("SELECT nombre FROM usuarios WHERE nombre = '" + username +"' and clave= '" + password + "'")
                  usuario = cursor.fetchone()
             conexion.close()
             if usuario is None:
@@ -26,12 +26,13 @@ def alta_usuario(username,password,nombre):
     try:
         conexion = obtener_conexion()
         with conexion.cursor() as cursor:
-            #cursor.execute("SELECT nombre FROM usuarios WHERE usuario = %s and clave= %s",(username,password))
-             cursor.execute("SELECT nombre FROM usuarios WHERE nombre = '" + username +"' and clave= '" + password + "'")
+             cursor.execute("SELECT nombre FROM usuarios WHERE nombre = %s and clave= %s",(username,password))
+             #cursor.execute("SELECT nombre FROM usuarios WHERE nombre = '" + username +"' and clave= '" + password + "'")
              usuario = cursor.fetchone()
              if usuario is None:
-                print("INSERT INTO usuarios(usuario,clave,nombre) VALUES('"+ username +"','"+  password+"','"+ nombre+"')") 
-                cursor.execute("INSERT INTO usuarios(usuario,clave,nombre) VALUES('"+ username +"','"+  password+"','"+ nombre+"')")
+                #print("INSERT INTO usuarios(usuario,clave,nombre) VALUES('"+ username +"','"+  password+"','"+ nombre+"')") 
+                cursor.execute("INSERT INTO usuarios(usuario,clave,nombre) VALUES(%s,%s,%s)", (usuario, password, nombre))
+                #cursor.execute("INSERT INTO usuarios(usuario,clave,nombre) VALUES('"+ username +"','"+  password+"','"+ nombre+"')")
                 if cursor.rowcount == 1:
                     conexion.commit()
                     ret={"status": "OK" }

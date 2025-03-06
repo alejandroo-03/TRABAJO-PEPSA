@@ -5,17 +5,18 @@ from bd import obtener_conexion
 import json
 import sys
 import controlador_usuario
-from funciones_auxiliares import Encoder
+from funciones_auxiliares import Encoder, sanitize_input
 
 @app.route("/login",methods=['POST'])
 def login():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         bicicleta_json = request.json
-        username = bicicleta_json['username']
-        password = bicicleta_json['password']
+        username = sanitize_input(bicicleta_json['username'])
+        password = sanitize_input(bicicleta_json['password'])
         respuesta,code = controlador_usuario.login_usuario(username,password)
         return json.dumps(respuesta, cls = Encoder),code
+    
     else:
         ret={"status":"Bad request"}
         code=401
