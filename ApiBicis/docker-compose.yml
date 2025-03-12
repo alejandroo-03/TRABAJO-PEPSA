@@ -37,7 +37,7 @@ services:
       HOST: 0.0.0.0
       PYTHONUNBUFFERED: 1
       SECRET_KEY: 'you-will-never-guess'
-      DEBUG: False
+      DEBUG: "False"
 
 
     depends_on:
