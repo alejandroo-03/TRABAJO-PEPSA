@@ -6,20 +6,32 @@ import json
 import sys
 import controlador_usuario
 from funciones_auxiliares import Encoder, sanitize_input
+import bleach
 
 @app.route("/login",methods=['POST'])
 def login():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         bicicleta_json = request.json
-        username = sanitize_input(bicicleta_json['username'])
-        password = sanitize_input(bicicleta_json['password'])
-        respuesta,code = controlador_usuario.login_usuario(username,password)
-        return json.dumps(respuesta, cls = Encoder),code
-    
+        
+        if "usertname" in bicicleta_json and "password" in bicicleta_json: 
+            username = sanitize_input(bicicleta_json['username'])
+            password = sanitize_input(bicicleta_json['password'])
+            
+            if isinstance(username,str) and isinstance(password,str) and len(username) < 50 and len(password) < 50:
+                respuesta,code = controlador_usuario.login_usuario(username,password)
+            else:
+                respuesta={"status":"Bad request"}
+                code=401 
+
+        else:
+            respuesta={"status":"Missing parameters"}
+            code=401     
+            
     else:
         ret={"status":"Bad request"}
         code=401
+        
     return json.dumps(ret), code
 
 @app.route("/registro",methods=['POST'])
@@ -27,9 +39,9 @@ def registro():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         bicicleta_json = request.json
-        username = bicicleta_json['username']
-        password = bicicleta_json['password']
-        perfil = bicicleta_json['profile']
+        username = sanitize_input(bicicleta_json['username'])
+        password = sanitize_input(bicicleta_json['password'])
+        perfil = sanitize_input(bicicleta_json['profile'])
         respuesta,code=controlador_usuario.alta_usuario(username,password,perfil)
         return json.dumps(respuesta, cls = Encoder), code
     else:

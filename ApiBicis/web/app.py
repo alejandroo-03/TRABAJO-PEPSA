@@ -12,6 +12,9 @@ import rutas_verfichero
 
 import rutas_bicis as rutas_bicis
 
+from flask_wtf.csrf import CSRFProtect    #en la parte superior
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT'))
     host = os.environ.get('HOST')
@@ -19,3 +22,11 @@ if __name__ == '__main__':
     
 def configure_app(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://user:@domain.com"
+    
+    
+csrf = CSRFProtect(app)     #tras crear la variable app
+
+@app.before_request
+def csrf_protect():
+    if not request.path.startswith("/login") and not request.path.startswith("/registro"):
+        csrf.protect()

@@ -4,19 +4,25 @@ import sys
 
 def login_usuario(username,password):
     try:
-            conexion = obtener_conexion()
-            with conexion.cursor() as cursor:
-                 cursor.execute("SELECT nombre FROM usuarios WHERE nombre= %s and clave= %s",(username,password))
-                 #cursor.execute("SELECT nombre FROM usuarios WHERE nombre = '" + username +"' and clave= '" + password + "'")
-                 usuario = cursor.fetchone()
-            conexion.close()
-            if usuario is None:
-                ret = {"status": "ERROR","mensaje":"Usuario/clave erroneo" }
-            else:
+        conexion = obtener_conexion()
+        with conexion.cursor() as cursor:
+                cursor.execute("SELECT nombre, clave FROM usuarios WHERE nombre= %s",(username))
+                #cursor.execute("SELECT nombre FROM usuarios WHERE nombre = '" + username +"' and clave= '" + password + "'")
+                usuario = cursor.fetchone()
+        conexion.close()
+        if usuario is None:
+            ret = {"status": "ERROR","mensaje":"Usuario/clave erroneo" }
+        else:
+            passwordIn=usuario[1]
+            
+            if (compare_password(password.encode("utf-8"),passwordIn.encode("utf-8"))):
+                    
                 ret = {"status": "OK" }
                 #session["usuario"]=username
                 #session["nombre"]=usuario[0]
-            code=200
+            else:
+                ret = {"status":"ERROR"}
+        code=200
     except:
           print("Excepcion al validar al usuario")   
           ret={"status":"ERROR"}
