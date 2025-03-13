@@ -6,31 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EJEMPLO APP WEB CON CRUD</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <style>
+        .oculto{
+            display:none;
+        }
+    </style>
     <script>
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        if (sessionStorage.getItem("csrf_token")){
+            myHeaders.append("X-CSRFToken",sessionStorage.getItem("csrf_token"))
+        }
+        var perfil="normal";
         onload=function(){
+            if (sessionStorage.getItem("perfil")){
+                perfil=sessionStorage.getItem("perfil")
+                if (perfil=="admin"){
+                    document.getElementById("enlaceAgregar").classList.remove("oculto");
+                }
+            }
             pedirbicis();
         }
         function pintarbicis(lista){
             let tbody=document.getElementsByTagName("tbody")[0];
-            tbody.innerHTML="";
+            tbody.innerText="";
             lista.forEach(bici => {
-                tbody.innerHTML+=`<tr>
+                let texto=`<tr>
                         <td><img src="${bici.foto}" width="70"></td>
                         <td>${bici.nombre}</td>
                         <td>${bici.descripcion}</td>
                         <td>${bici.precio}</td>
-                        <td>
-                            <a href="/editar_bici.html?id=${bici.id}" class="button is-info">Editar</a>
+                        <td>`
+                if (perfil=="admin"){
+                    texto+=`<a href="/editar_bici.html?id=${bici.id}" class="button is-info">Editar</a>
                         </td>
                         <td>
                             <button class="button is-danger" onclick="eliminarbici(${bici.id})">Eliminar</button>
-                        </td>
-            </tr>`                            
+                        </td>`
+                } else{
+                    texto+=`<td></td><td></td>`
+                }        
+                texto+=`</tr>`;
+                tbody.innerHTML+=texto
             });
         }
         function pedirbicis(){
             var requestOptions = {
-                method: 'GET'
+                method: 'GET',
+                headers: myHeaders,
             };
 
             fetch("/api/bicis", requestOptions)
@@ -49,7 +72,8 @@
         }
         function eliminarbici(id){
             var requestOptions = {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: myHeaders,
             };
 
             fetch("/api/bicis/"+id, requestOptions)
@@ -69,7 +93,8 @@
         }
         function cerrarSesion(){
             var requestOptions = {
-                method: 'GET'
+                method: 'GET',
+                headers: myHeaders,
             };
             fetch("/api/logout", requestOptions)
                 .then(response => response.json())
@@ -114,7 +139,7 @@
         <div class="columns">
             <div class="column">
                 <h3 class="is-size-3">bicis</h3>
-                <a href="/agregar_bici.html" class="button is-success">Agregar</a>
+                <a id="enlaceAgregar" href="/agregar_bici.html" class="button is-success">Agregar</a>
                 <table class="table">
                     <thead>
                         <tr>
