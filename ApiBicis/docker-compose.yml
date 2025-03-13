@@ -30,7 +30,7 @@ services:
     environment:
       DB_USERNAME: user
       DB_PASSWORD: user
-      DB_DATABASE: DEATHBIKE
+      DB_DATABASE: DEATHBIKES
       DB_HOST: mariadb
       DB_PORT: 3306
       PORT: 8080
