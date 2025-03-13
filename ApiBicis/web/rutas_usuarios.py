@@ -14,18 +14,18 @@ def login():
     if (content_type == 'application/json'):
         bicicleta_json = request.json
         
-        if "usertname" in bicicleta_json and "password" in bicicleta_json: 
+        if "username" in bicicleta_json and "password" in bicicleta_json: 
             username = sanitize_input(bicicleta_json['username'])
             password = sanitize_input(bicicleta_json['password'])
             
             if isinstance(username,str) and isinstance(password,str) and len(username) < 50 and len(password) < 50:
-                respuesta,code = controlador_usuario.login_usuario(username,password)
+                ret,code = controlador_usuario.login_usuario(username,password)
             else:
-                respuesta={"status":"Bad request"}
+                ret={"status":"Bad request"}
                 code=401 
 
         else:
-            respuesta={"status":"Missing parameters"}
+            ret={"status":"Missing parameters"}
             code=401     
             
     else:
