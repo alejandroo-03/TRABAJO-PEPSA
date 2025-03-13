@@ -1,6 +1,7 @@
 from __future__ import print_function
 from bd import obtener_conexion
 import sys
+from funciones_auxiliares import compare_password
 
 def login_usuario(username,password):
     try:
