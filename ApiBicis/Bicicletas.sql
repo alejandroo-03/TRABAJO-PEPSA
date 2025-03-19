@@ -37,11 +37,11 @@ VALUES
 
 
 
-INSERT INTO usuarios (nombre, clave) VALUES ('Alejandro', '1234');
-INSERT INTO usuarios (nombre, clave) VALUES ('Ivan', '1234');
-INSERT INTO usuarios (nombre, clave) VALUES ('Fernando', 'Clave$1');
-INSERT INTO usuarios (nombre, clave) VALUES ('Alberto', '1234');
-INSERT INTO usuarios (nombre, clave) VALUES ('Invitado', '1234');
+--INSERT INTO usuarios (nombre, clave) VALUES ('Alejandro', '1234');
+--INSERT INTO usuarios (nombre, clave) VALUES ('Ivan', '1234');
+--INSERT INTO usuarios (nombre, clave) VALUES ('Fernando', 'Clave$1');
+--INSERT INTO usuarios (nombre, clave) VALUES ('Alberto', '1234');
+--INSERT INTO usuarios (nombre, clave) VALUES ('Invitado', '1234');
 
 
 --INSERT INTO `usuarios` (`usuario`,`clave`,`perfil`,`estado`, `correo`, `numeroAccesosErroneo`,`fechaUltimoAcceso`)VALUES ('admin', 'activo','root@bikes.es', 0, '2022-03-01 00:00')

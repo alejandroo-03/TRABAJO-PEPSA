@@ -5,14 +5,15 @@ services:
     container_name: mariadba2
     restart: always
     environment:
+      MARIADB_DATABASE: DEATHBIKES
       MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
       #MARIADB_ROOT_PASSWORD: example
       #MARIADB_USER: user
       #MARIADB_PASSWORD: user
-      MARIADB_DATABASE: DEATHBIKES
+      
     volumes:
       - mariadb_dataa2:/var/lib/mysql #:rw
-      - ./Bicicletas.sql:/docker-entrypoint-initdb.d/Bicicletas.sql:rw
+      - ./Bicicletas.sql:/docker-entrypoint-initdb.d/Bicicletas.sql #:rw
     #user: mysql
   phpmyadmin:
     image: phpmyadmin
