@@ -46,8 +46,8 @@ def guardar_bici():
             descripcion = sanitize_input(bici_json["descripcion"])
             precio = bici_json["precio"]
             foto = sanitize_input(bici_json["foto"])
-            #ingredientes = sanitize_input(bici_json["ingredientes"])
-            if isinstance(nombre, str) and isinstance(descripcion, str) and isinstance(foto, str) and len(nombre)<128 and len(descripcion)<512 and len(foto)<128 and len(ingredientes)<512:
+            
+            if isinstance(nombre, str) and isinstance(descripcion, str) and isinstance(foto, str) and len(nombre)<128 and len(descripcion)<512 and len(foto)<128:
                 if (validar_session_admin()):
                     precio = float(precio)
                     respuesta,code=controlador_bicis.insertar_bici(nombre,descripcion,precio,foto)
@@ -95,8 +95,8 @@ def actualizar_bici():
             descripcion = sanitize_input(bici_json["descripcion"])
             precio = bici_json["precio"]
             foto = sanitize_input(bici_json["foto"])
-            #ingredientes = sanitize_input(chuche_json["ingredientes"])
-            if id.isnumeric() and isinstance(nombre, str) and isinstance(descripcion, str) and precio.isnumeric() and isinstance(foto, str) and len(id)<8 and len(nombre)<128 and len(descripcion)<512 and len(foto)<128 and len(ingredientes)<512:
+            
+            if id.isnumeric() and isinstance(nombre, str) and isinstance(descripcion, str) and precio.isnumeric() and isinstance(foto, str) and len(id)<8 and len(nombre)<128 and len(descripcion)<512 and len(foto)<128:
                 id=int(id)
                 precio=float(precio)
                 if (validar_session_normal()):

@@ -15,6 +15,9 @@ services:
       - mariadb_dataa2:/var/lib/mysql #:rw
       - ./Bicicletas.sql:/docker-entrypoint-initdb.d/Bicicletas.sql #:rw
     #user: mysql
+    secrets:
+      - db_root_password
+
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmina2
@@ -47,7 +50,7 @@ services:
     env_file: .env
     environment:
       DB_PORT: 3306
-      DB_HOST: db
+      DB_HOST: mariadb
       DB_DATABASE: DEATHBIKES
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}

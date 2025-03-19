@@ -10,7 +10,7 @@ def login_usuario(username,passwordIn):
     try:
         conexion = obtener_conexion()
         with conexion.cursor() as cursor:
-            cursor.execute("SELECT perfil,clave,numeroAccesosErroneo FROM usuarios WHERE estado='activo' and usuario = %s",(username))
+            cursor.execute("SELECT perfil,clave,numeroAccesosErroneo FROM usuarios WHERE estado='activo' and nombre = %s",(username))
             usuario = cursor.fetchone()
             
             if usuario is None:
@@ -40,7 +40,7 @@ def login_usuario(username,passwordIn):
                     else:
                         estado='activo'
                     ret = {"status": "ERROR","mensaje":"Usuario/clave erroneo"}
-                cursor.execute("UPDATE usuarios SET numeroAccesosErroneo=%s, fechaUltimoAcceso=%s, estado=%s WHERE usuario = %s",(numAccesosErroneos,hoy,estado,username))
+                cursor.execute("UPDATE usuarios SET numeroAccesosErroneo=%s, fechaUltimoAcceso=%s, estado=%s WHERE nombre = %s",(numAccesosErroneos,hoy,estado,username))
                 conexion.commit()
                 conexion.close()
             code=200
@@ -54,11 +54,11 @@ def alta_usuario(username,password,perfil,correo):
     try:
         conexion = obtener_conexion()
         with conexion.cursor() as cursor:
-            cursor.execute("SELECT perfil FROM usuarios WHERE usuario = %s",(username,))
+            cursor.execute("SELECT perfil FROM usuarios WHERE nombre = %s",(username))
             usuario = cursor.fetchone()
             if usuario is None:
                 passwordC=cipher_password(password)
-                cursor.execute("INSERT INTO usuarios(usuario,clave,correo,perfil,estado,numeroAccesosErroneo) VALUES(%s,%s,%s,'normal','activo',0)",(username,passwordC,correo))
+                cursor.execute("INSERT INTO usuarios(nombre,clave,correo,perfil,estado,numeroAccesosErroneo) VALUES(%s,%s,%s,'normal','activo',0)",(username,passwordC,correo))
                 if cursor.rowcount == 1:
                     conexion.commit()
                     app.logger.info("Nuevo usuario creado")
@@ -71,8 +71,8 @@ def alta_usuario(username,password,perfil,correo):
                 ret = {"status": "ERROR","mensaje":"Usuario ya existe" }
                 code=200
         conexion.close()
-    except e:
-        print("Excepcion al registrar al usuario" + e)   
+    except:
+        print("Excepcion al registrar al usuario")   
         ret={"status":"ERROR"}
         code=500
     return ret,code    
