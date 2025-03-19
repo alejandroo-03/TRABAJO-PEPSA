@@ -1,7 +1,7 @@
 version: '3'
 services:
   mariadb:
-    image: mariadb
+    image: mariadb:10.3
     container_name: mariadba2
     restart: always
     environment:
@@ -27,22 +27,32 @@ services:
   python:
     build: .
     container_name: pythona2
-    environment:
-      DB_USERNAME: user
-      DB_PASSWORD: user
-      DB_DATABASE: DEATHBIKES
-      DB_HOST: mariadb
-      DB_PORT: 3306
-      PORT: 8080
-      HOST: 0.0.0.0
-      PYTHONUNBUFFERED: 1
-      SECRET_KEY: 'you-will-never-guess'
-      DEBUG: "False"
-
-
+    #environment:
+    #  DB_USERNAME: user
+    #  DB_PASSWORD: user
+    #  DB_DATABASE: DEATHBIKES
+    #  DB_HOST: mariadb
+    #  DB_PORT: 3306
+    #  PORT: 8080
+    #  HOST: 0.0.0.0
+    #  PYTHONUNBUFFERED: 1
+    #  SECRET_KEY: 'you-will-never-guess'
+    #  DEBUG: "False"
     depends_on:
         - mariadb
-
+    env_file: .env
+    environment:
+      DB_PORT: 3306
+      DB_HOST: db
+      DB_DATABASE: DEATHBIKES
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      SECRET_KEY: ${SECRET_KEY}
+      WTF_CSRF_SECRET_KEY: ${WTF_CSRF_SECRET_KEY}       
+      HOST: "0.0.0.0"
+      PORT: 8080
+    volumes:
+      - ./logapi/:/app/logs
         #Meter APACHE
   apache:
     build: ./Apache
