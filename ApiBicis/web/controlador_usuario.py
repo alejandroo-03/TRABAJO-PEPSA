@@ -71,8 +71,8 @@ def alta_usuario(username,password,perfil,correo):
                 ret = {"status": "ERROR","mensaje":"Usuario ya existe" }
                 code=200
         conexion.close()
-    except:
-        print("Excepcion al registrar al usuario")   
+    except e:
+        print("Excepcion al registrar al usuario" + e)   
         ret={"status":"ERROR"}
         code=500
     return ret,code    
