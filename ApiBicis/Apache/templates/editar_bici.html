@@ -9,6 +9,12 @@
     <script>
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+
+        if(sessionStorage.getItem("csrf_token")){
+            myHeaders.append("X-CSRFToken",sessionStorage.getItem("csrf_token"))
+        }
+
+
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
         var id = urlParams.get('id');
@@ -24,19 +30,21 @@
                 .then(response => response.json())
                 .then(result => pintarbici(result))
                 .catch(error => {
-                    console.log('error', error)
-                    alert("Ha habido un error al recuperar los datos del bici");
+                    alert("Ha habido un error al recuperar los datos de la bici");
                     location.href="bicis.html";
                 });
 
         }
         function pintarbici(bici){
+            console.log(bici);
+
             document.getElementById("nombre").value=bici.nombre;
-            descripcion=document.getElementById("descripcion").value=bici.descripcion;
-            precio=document.getElementById("precio").value=bici.precio;
+            document.getElementById("descripcion").value=bici.descripcion;
+            document.getElementById("precio").value=bici.precio;
             document.getElementById("foto").value=bici.foto;
         }
-        function guardar(){            
+
+        function guardar() {            
             let nombre=document.getElementById("nombre").value;
             let descripcion=document.getElementById("descripcion").value;
             let precio=document.getElementById("precio").value;
@@ -54,19 +62,22 @@
                 body: datos
             };
 
+            console.log(requestOptions);
+
             fetch("/api/bicis", requestOptions)
                 .then(response => response.json())
                 .then(result => {
+
                     if (result.status == "OK"){
-                        alert("bici modificado")
+                        alert("bici modificada")
                         location.href="bicis.html"
                     } else {
-                        alert("El bici no ha podido ser modificado")
+                        alert("La bici no ha podido ser modificada")
                     }
                 })
                 .catch(error => {
                     console.log('error', error);
-                    alert("Se ha producido un error y el bici no ha podido ser modificado")
+                    alert("Se ha producido un error y la bici no ha podido ser modificada")
                 });
         }
     </script>
