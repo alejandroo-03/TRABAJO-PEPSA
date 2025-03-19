@@ -7,9 +7,18 @@
     <title>EJEMPLO APP WEB CON CRUD</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <script>
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
+        onload=()=>{
+            if (!sessionStorage.getItem("perfil") || sessionStorage.getItem("perfil")=="normal"){
+                location.href="bicis.html"
+            } else {
+        
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                if (sessionStorage.getItem("csrf_token")){
+                    myHeaders.append("X-CSRFToken",sessionStorage.getItem("csrf_token"))
+                }
+            }
+        }
         function guardar(){
             let nombre=document.getElementById("nombre").value;
             let descripcion=document.getElementById("descripcion").value;
@@ -31,15 +40,15 @@
                 .then(response => response.json())
                 .then(result => {
                     if (result.status == "OK"){
-                        alert("bici guardado")
+                        alert("bici guardada")
                         location.href="bicis.html"
                     } else {
-                        alert("El bici no ha podido ser guardado")
+                        alert("La bici no ha podido ser guardada")
                     }
                 })
                 .catch(error => {
                     console.log('error', error);
-                    alert("Se ha producido un error y el bici no ha podido ser guardado")
+                    alert("Se ha producido un error y la bici no ha podido ser guardada")
                 });
         }
     </script>
