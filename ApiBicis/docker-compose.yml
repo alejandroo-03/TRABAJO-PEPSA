@@ -5,23 +5,26 @@ services:
     container_name: mariadba2
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: example
-      MARIADB_USER: user
-      MARIADB_PASSWORD: user
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      #MARIADB_ROOT_PASSWORD: example
+      #MARIADB_USER: user
+      #MARIADB_PASSWORD: user
       MARIADB_DATABASE: DEATHBIKES
     volumes:
-      - mariadb_dataa2:/var/lib/mysql:rw
+      - mariadb_dataa2:/var/lib/mysql #:rw
       - ./Bicicletas.sql:/docker-entrypoint-initdb.d/Bicicletas.sql:rw
-
-    user: mysql
+    #user: mysql
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmina2
     restart: always
     environment:
-      - PMA_HOST=mariadb
+      PMA_ARBITRARY:
+      PMA_HOST: mariadb
     ports:
       - 7002:80
+    links:
+      - mariadb
     depends_on:
       - mariadb
   python:
@@ -61,3 +64,26 @@ services:
   
 volumes:
   mariadb_dataa2:
+
+#apache-waf:
+#    build: ./apache/ #./waf/ en un futuro
+#    ports:
+#      - 443:443
+#      - 6000:80
+#    depends_on:
+#      - python
+#    links:
+#      - python
+#    volumes:
+#      - ./apache/static:/var/www/html # en el futuro se quita
+#      - ./logwaf:/var/log/apache2
+secrets:
+  db_root_user:
+    file: ./secretos/db_root_user.txt
+  db_root_password:
+    file: ./secretos/db_root_password.txt
+  db_user_username:
+    file: ./secretos/db_user_username.txt
+  db_user_password:
+    file: ./secretos/db_user_password.txt
+      
