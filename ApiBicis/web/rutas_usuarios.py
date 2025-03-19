@@ -39,7 +39,7 @@ def registro():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         bicicleta_json = request.json
-        if "username" in login_json and "password" in login_json and "profile" in login_json and "email" in login_json:
+        if "username" in bicicleta_json and "password" in bicicleta_json and "profile" in bicicleta_json and "email" in bicicleta_json:
             username = sanitize_input(bicicleta_json['username'])
             password = sanitize_input(bicicleta_json['password'])
             perfil = sanitize_input(bicicleta_json['profile'])
@@ -49,19 +49,25 @@ def registro():
                 respuesta,code= controlador_usuario.alta_usuario(username,password,perfil,email)
             else:
                 respuesta={"status":"Bad parameters"}
-                code=401
+                code=403
         else:
             respuesta={"status":"Bad request"}
-            code=401
+            code=402
     else:
-        ret={"status":"Bad request"}
-        code=401
+        respuesta={"status":"Bad format"}
+        code=407
     
     return make_response(json.dumps(respuesta, cls=Encoder), code)
 
 
-@app.route("/logout", methods=['GET'])
+@app.route("/logout",methods=['GET'])
 def logout():
-    
-    response = json.dumps({"status": "OK"})
-    return response, 200, {'Content-Type': 'application/json'}
+    try:
+        delete_session()
+        ret={"status":"OK"}
+        code=200
+    except:
+        ret={"status":"ERROR"}
+        code=500
+    response=make_response(json.dumps(ret),code)
+    return response
