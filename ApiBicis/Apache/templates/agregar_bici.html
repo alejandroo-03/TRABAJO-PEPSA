@@ -7,12 +7,15 @@
     <title>EJEMPLO APP WEB CON CRUD</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <script>
+
+        var myHeaders
+
         onload=()=>{
             if (!sessionStorage.getItem("perfil") || sessionStorage.getItem("perfil")=="normal"){
                 location.href="bicis.html"
             } else {
         
-                var myHeaders = new Headers();
+                myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
                 if (sessionStorage.getItem("csrf_token")){
                     myHeaders.append("X-CSRFToken",sessionStorage.getItem("csrf_token"))

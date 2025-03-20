@@ -529,3 +529,185 @@ NameError: name 'ingredientes' is not defined
 [2025-03-19 10:04:51,115] INFO in _internal: 172.19.0.3 - - [19/Mar/2025 10:04:51] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
 [2025-03-19 10:05:00,284] INFO in app: path: /upload | method: POST | status: 400 BAD REQUEST | size: 142 >>> 172.19.0.3
 [2025-03-19 10:05:00,284] INFO in _internal: 172.19.0.3 - - [19/Mar/2025 10:05:00] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+[2025-03-20 09:24:18,866] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2025-03-20 09:25:43,014] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2025-03-20 09:26:42,301] INFO in app: path: /login | method: POST | status: 200 OK | size: 55 >>> 172.19.0.2
+[2025-03-20 09:26:42,302] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:26:42] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:26:55,244] INFO in controlador_usuario: Nuevo usuario creado
+[2025-03-20 09:26:55,245] INFO in app: path: /registro | method: POST | status: 200 OK | size: 16 >>> 172.19.0.2
+[2025-03-20 09:26:55,245] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:26:55] "[37mPOST /registro HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:05,122] INFO in controlador_usuario: Acceso usuario ivan incorrecto
+[2025-03-20 09:27:05,157] INFO in app: path: /login | method: POST | status: 200 OK | size: 55 >>> 172.19.0.2
+[2025-03-20 09:27:05,157] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:05] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:09,942] INFO in controlador_usuario: Acceso usuario ivan correcto
+[2025-03-20 09:27:09,975] INFO in app: path: /login | method: POST | status: 200 OK | size: 145 >>> 172.19.0.2
+[2025-03-20 09:27:09,976] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:09] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:10,052] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:10,053] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:10] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:13,763] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:13,764] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:13] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:15,286] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:15,286] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:15] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:15,826] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:15,826] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:15] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:16,577] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:16,577] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:16] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:17,184] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:17,184] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:17] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:17,792] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:17,793] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:17] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:18,502] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:18,502] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:18] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:18,797] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:18,797] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:18] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:19,003] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:19,004] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:19] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:19,482] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:19,482] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:19] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:20,153] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:20,153] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:20] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:23,736] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:23,737] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:23] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:24,444] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:24,444] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:24] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:24,627] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:24,628] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:24] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:25,076] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:25,077] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:25] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:25,525] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:25,525] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:25] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:26,020] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:26,020] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:26] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:43,898] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:43,899] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:43] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:44,455] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:44,456] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:44] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:27:44,990] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:27:44,991] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:27:44] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:28:15,902] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:28:15,902] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:28:15] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:28:36,763] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:28:36,764] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:28:36] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:28:37,435] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:28:37,435] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:28:37] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:28:48,222] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:28:48,222] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:28:48] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:28:48,694] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:28:48,695] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:28:48] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:28:56,473] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:28:56,474] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:28:56] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:30:06,405] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:30:06,406] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:30:06] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:30:12,916] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:30:12,916] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:30:12] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:31:15,005] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:31:15,006] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:31:15] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:31:16,187] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:31:16,187] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:31:16] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:31:17,671] INFO in app: path: /logout | method: GET | status: 200 OK | size: 16 >>> 172.19.0.2
+[2025-03-20 09:31:17,672] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:31:17] "[37mGET /logout HTTP/1.1[0m" 200 -
+[2025-03-20 09:31:22,587] INFO in controlador_usuario: Acceso usuario ivan correcto
+[2025-03-20 09:31:22,587] INFO in app: path: /login | method: POST | status: 200 OK | size: 144 >>> 172.19.0.2
+[2025-03-20 09:31:22,588] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:31:22] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:31:22,644] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:31:22,644] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:31:22] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:38:55,559] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2025-03-20 09:39:23,152] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:39:23,152] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:23] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:39:24,012] INFO in app: path: /logout | method: GET | status: 200 OK | size: 16 >>> 172.19.0.2
+[2025-03-20 09:39:24,013] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:24] "[37mGET /logout HTTP/1.1[0m" 200 -
+[2025-03-20 09:39:28,671] INFO in app: path: /login | method: POST | status: 200 OK | size: 55 >>> 172.19.0.2
+[2025-03-20 09:39:28,671] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:28] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:39:36,179] INFO in controlador_usuario: Nuevo usuario creado
+[2025-03-20 09:39:36,179] INFO in app: path: /registro | method: POST | status: 200 OK | size: 16 >>> 172.19.0.2
+[2025-03-20 09:39:36,179] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:36] "[37mPOST /registro HTTP/1.1[0m" 200 -
+[2025-03-20 09:39:42,580] INFO in controlador_usuario: Acceso usuario ivan correcto
+[2025-03-20 09:39:42,615] INFO in app: path: /login | method: POST | status: 200 OK | size: 145 >>> 172.19.0.2
+[2025-03-20 09:39:42,616] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:42] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:39:42,682] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:39:42,683] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:42] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:39:43,712] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:39:43,712] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:43] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:39:45,709] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:39:45,710] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:45] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:39:46,511] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:39:46,511] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:39:46] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:40:03,197] INFO in app: path: /logout | method: GET | status: 200 OK | size: 16 >>> 172.19.0.2
+[2025-03-20 09:40:03,197] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:40:03] "[37mGET /logout HTTP/1.1[0m" 200 -
+[2025-03-20 09:40:08,491] INFO in controlador_usuario: Acceso usuario ivan correcto
+[2025-03-20 09:40:08,491] INFO in app: path: /login | method: POST | status: 200 OK | size: 144 >>> 172.19.0.2
+[2025-03-20 09:40:08,492] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:40:08] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:40:08,550] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.2
+[2025-03-20 09:40:08,550] INFO in _internal: 172.19.0.2 - - [20/Mar/2025 09:40:08] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:41:44,700] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2025-03-20 09:42:33,125] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.3
+[2025-03-20 09:42:33,126] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:42:33] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:42:33,819] INFO in app: path: /logout | method: GET | status: 200 OK | size: 16 >>> 172.19.0.3
+[2025-03-20 09:42:33,819] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:42:33] "[37mGET /logout HTTP/1.1[0m" 200 -
+[2025-03-20 09:42:43,368] INFO in app: path: /registro | method: POST | status: 200 OK | size: 51 >>> 172.19.0.3
+[2025-03-20 09:42:43,369] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:42:43] "[37mPOST /registro HTTP/1.1[0m" 200 -
+[2025-03-20 09:42:53,899] INFO in controlador_usuario: Acceso usuario ivan correcto
+[2025-03-20 09:42:53,900] INFO in app: path: /login | method: POST | status: 200 OK | size: 144 >>> 172.19.0.3
+[2025-03-20 09:42:53,900] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:42:53] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:42:53,955] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.3
+[2025-03-20 09:42:53,956] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:42:53] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:43:00,195] ERROR in app: Exception on /bicis [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/app/rutas_bicis.py", line 53, in guardar_bici
+    respuesta,code=controlador_bicis.insertar_bici(nombre,descripcion,precio,foto)
+AttributeError: module 'controlador_bicis' has no attribute 'insertar_bici'
+[2025-03-20 09:43:00,195] ERROR in app: An exception occurred during a request.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/app/rutas_bicis.py", line 53, in guardar_bici
+    respuesta,code=controlador_bicis.insertar_bici(nombre,descripcion,precio,foto)
+AttributeError: module 'controlador_bicis' has no attribute 'insertar_bici'
+[2025-03-20 09:43:00,195] INFO in app: path: /bicis | method: POST | status: 500 INTERNAL SERVER ERROR | size: 21 >>> 172.19.0.3
+[2025-03-20 09:43:00,196] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:43:00] "[35m[1mPOST /bicis HTTP/1.1[0m" 500 -
+[2025-03-20 09:44:55,759] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2025-03-20 09:45:04,201] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.3
+[2025-03-20 09:45:04,201] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:04] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:05,087] INFO in app: path: /logout | method: GET | status: 200 OK | size: 16 >>> 172.19.0.3
+[2025-03-20 09:45:05,088] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:05] "[37mGET /logout HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:09,706] INFO in controlador_usuario: Acceso usuario ivan correcto
+[2025-03-20 09:45:09,707] INFO in app: path: /login | method: POST | status: 200 OK | size: 144 >>> 172.19.0.3
+[2025-03-20 09:45:09,707] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:09] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:09,773] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.3
+[2025-03-20 09:45:09,773] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:09] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:15,263] INFO in app: path: /bicis | method: POST | status: 200 OK | size: 16 >>> 172.19.0.3
+[2025-03-20 09:45:15,263] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:15] "[37mPOST /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:16,464] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 794 >>> 172.19.0.3
+[2025-03-20 09:45:16,464] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:16] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:21,907] INFO in app: path: /bicis/6 | method: DELETE | status: 200 OK | size: 16 >>> 172.19.0.3
+[2025-03-20 09:45:21,908] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:21] "[37mDELETE /bicis/6 HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:23,118] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 710 >>> 172.19.0.3
+[2025-03-20 09:45:23,118] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:23] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:26,042] INFO in app: path: /bicis/1 | method: GET | status: 200 OK | size: 138 >>> 172.19.0.3
+[2025-03-20 09:45:26,043] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:26] "[37mGET /bicis/1 HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:28,443] INFO in app: path: /bicis | method: PUT | status: 200 OK | size: 16 >>> 172.19.0.3
+[2025-03-20 09:45:28,444] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:28] "[37mPUT /bicis HTTP/1.1[0m" 200 -
+[2025-03-20 09:45:31,306] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 715 >>> 172.19.0.3
+[2025-03-20 09:45:31,307] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:31] "[37mGET /bicis HTTP/1.1[0m" 200 -

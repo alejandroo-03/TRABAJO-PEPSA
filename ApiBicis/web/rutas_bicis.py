@@ -50,7 +50,7 @@ def guardar_bici():
             if isinstance(nombre, str) and isinstance(descripcion, str) and isinstance(foto, str) and len(nombre)<128 and len(descripcion)<512 and len(foto)<128:
                 if (validar_session_admin()):
                     precio = float(precio)
-                    respuesta,code=controlador_bicis.insertar_bici(nombre,descripcion,precio,foto)
+                    respuesta,code=controlador_bicis.insertar_bicis(nombre,descripcion,precio,foto)
                 else: 
                     respuesta={"status":"Forbidden"}
                     code=403
