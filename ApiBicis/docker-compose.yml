@@ -61,26 +61,27 @@ services:
     volumes:
       - ./logapi/:/app/logs
         #Meter APACHE
-  apache:
-    build: ./Apache
+#  apache:
+ #   build: ./Apache
+  #  ports:
+   #   - 6002:80
+  apache-waf:
+    build: ./Apache/ #./waf/ en un futuro
     ports:
+      - 443:443
       - 6002:80
+    depends_on:
+      - python
+    links:
+      - python
+    volumes:
+      #- ./apache/static:/var/www/html # en el futuro se quita
+      - ./logwaf:/var/log/apache2
   
 volumes:
   mariadb_dataa2:
 
-#apache-waf:
-#    build: ./apache/ #./waf/ en un futuro
-#    ports:
-#      - 443:443
-#      - 6000:80
-#    depends_on:
-#      - python
-#    links:
-#      - python
-#    volumes:
-#      - ./apache/static:/var/www/html # en el futuro se quita
-#      - ./logwaf:/var/log/apache2
+
 secrets:
   db_root_user:
     file: ./secretos/db_root_user.txt

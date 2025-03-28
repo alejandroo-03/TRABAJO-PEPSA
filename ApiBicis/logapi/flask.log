@@ -714,3 +714,32 @@ AttributeError: module 'controlador_bicis' has no attribute 'insertar_bici'
 [2025-03-20 09:45:31,306] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 715 >>> 172.19.0.3
 [2025-03-20 09:45:31,307] INFO in _internal: 172.19.0.3 - - [20/Mar/2025 09:45:31] "[37mGET /bicis HTTP/1.1[0m" 200 -
 >>>>>>> arreglar-login-y-registro
+[2025-03-27 11:28:19,649] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2025-03-28 09:33:22,012] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2025-03-28 09:39:39,102] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2025-03-28 09:42:41,875] INFO in app: path: /login | method: POST | status: 200 OK | size: 55 >>> 172.19.0.5
+[2025-03-28 09:42:41,875] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:42:41] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-28 09:42:48,103] INFO in app: path: /registro | method: POST | status: 200 OK | size: 51 >>> 172.19.0.5
+[2025-03-28 09:42:48,104] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:42:48] "[37mPOST /registro HTTP/1.1[0m" 200 -
+[2025-03-28 09:42:57,577] INFO in controlador_usuario: Acceso usuario ivan correcto
+[2025-03-28 09:42:57,617] INFO in app: path: /login | method: POST | status: 200 OK | size: 144 >>> 172.19.0.5
+[2025-03-28 09:42:57,618] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:42:57] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-28 09:42:57,808] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 715 >>> 172.19.0.5
+[2025-03-28 09:42:57,809] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:42:57] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-28 09:45:07,580] INFO in app: path: /bicis/1 | method: GET | status: 200 OK | size: 143 >>> 172.19.0.5
+[2025-03-28 09:45:07,580] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:45:07] "[37mGET /bicis/1 HTTP/1.1[0m" 200 -
+[2025-03-28 09:45:52,378] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 715 >>> 172.19.0.5
+[2025-03-28 09:45:52,378] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:45:52] "[37mGET /bicis HTTP/1.1[0m" 200 -
+[2025-03-28 09:45:56,248] INFO in app: path: /logout | method: GET | status: 200 OK | size: 16 >>> 172.19.0.5
+[2025-03-28 09:45:56,249] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:45:56] "[37mGET /logout HTTP/1.1[0m" 200 -
+[2025-03-28 09:46:05,203] INFO in app: path: /bicis | method: GET | status: 403 FORBIDDEN | size: 23 >>> 172.19.0.5
+[2025-03-28 09:46:05,203] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:46:05] "[31m[1mGET /bicis HTTP/1.1[0m" 403 -
+[2025-03-28 09:46:27,724] INFO in app: path: /bicis | method: GET | status: 403 FORBIDDEN | size: 23 >>> 172.19.0.5
+[2025-03-28 09:46:27,724] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:46:27] "[31m[1mGET /bicis HTTP/1.1[0m" 403 -
+[2025-03-28 09:47:25,975] INFO in app: path: /login | method: POST | status: 200 OK | size: 55 >>> 172.19.0.5
+[2025-03-28 09:47:25,976] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:47:25] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-28 09:48:24,159] INFO in controlador_usuario: Acceso usuario ivan correcto
+[2025-03-28 09:48:24,159] INFO in app: path: /login | method: POST | status: 200 OK | size: 144 >>> 172.19.0.5
+[2025-03-28 09:48:24,160] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:48:24] "[37mPOST /login HTTP/1.1[0m" 200 -
+[2025-03-28 09:48:24,263] INFO in app: path: /bicis | method: GET | status: 200 OK | size: 715 >>> 172.19.0.5
+[2025-03-28 09:48:24,264] INFO in _internal: 172.19.0.5 - - [28/Mar/2025 09:48:24] "[37mGET /bicis HTTP/1.1[0m" 200 -
