@@ -66,9 +66,10 @@ services:
   #  ports:
    #   - 6002:80
   apache-waf:
+    container_name: apachea2
     build: ./Apache/ #./waf/ en un futuro
     ports:
-      - 443:443
+      - 6012:443
       - 6002:80
     depends_on:
       - python
