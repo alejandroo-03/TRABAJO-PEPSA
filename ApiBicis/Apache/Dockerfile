@@ -5,7 +5,11 @@ ENV APACHE_GROUP_DATA=www-data
 RUN apt update
 RUN DEBIAN_FRONTEND=noninteractive apt install -y apache2
 RUN apt install -y libapache2-mod-security2 openssl
-
+## Probando certificados automáticos
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /etc/ssl/private/server.key \
+    -out /etc/ssl/certs/server.crt \
+    -subj "/C=US/ST=State/L=City/O=Company/OU=IT Department/CN=localhost"
 # Configuracion basica
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY ports.conf /etc/apache2/ports.conf
@@ -14,8 +18,8 @@ COPY ./cliente/ /var/www/html
 
 # Habilitar https
 COPY ./default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
-COPY ./server.crt /etc/ssl/certs/server.crt
-COPY ./server.key /etc/ssl/private/server.key
+#COPY ./server.crt /etc/ssl/certs/server.crt
+#COPY ./server.key /etc/ssl/private/server.key
 COPY ./pass.sh /etc/ssl/private/pass.sh
 RUN chmod u+x /etc/ssl/private/pass.sh
 RUN a2enmod ssl
