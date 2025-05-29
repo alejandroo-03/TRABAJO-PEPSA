@@ -9,7 +9,7 @@ RUN apt install -y libapache2-mod-security2 openssl
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout /etc/ssl/private/server.key \
     -out /etc/ssl/certs/server.crt \
-    -subj "/C=US/ST=State/L=City/O=Company/OU=IT Department/CN=localhost"
+    -subj "/C=ES/ST=Madrid/L=Madrid/O=canaveral/OU=IT Department/CN=localhost"
 # Configuracion basica
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY ports.conf /etc/apache2/ports.conf
