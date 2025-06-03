@@ -85,11 +85,11 @@ volumes:
 
 secrets:
   db_root_user:
-    file: ./ApiBicis/secretos/db_root_user.txt
+    file: ./secretos/db_root_user.txt
   db_root_password:
-    file: ./ApiBicis/secretos/db_root_password.txt
+    file: ./secretos/db_root_password.txt
   db_user_username:
-    file: ./ApiBicis/secretos/db_user_username.txt
+    file: ./secretos/db_user_username.txt
   db_user_password:
-    file: ./ApiBicis/secretos/db_user_password.txt
+    file: ./secretos/db_user_password.txt
       
