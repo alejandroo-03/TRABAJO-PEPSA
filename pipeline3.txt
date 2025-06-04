@@ -1,0 +1,173 @@
+pipeline {
+    agent any
+
+    tools {
+       dockerTool "Docker"
+    }
+    environment {
+        registrypython= "ivanestudios/pepspython"
+        registrywaf= "ivanestudios/pepswaf"
+        registryCredential= 'DockerHub'
+        DOCKERHUB_CREDENTIALS = credentials('DockerHub')
+        DOCKER_IMAGEPYTHON = "ivanestudios/pepspython"
+        DOCKER_IMAGEWAF = "ivanestudios/pepswaf"
+    }
+
+    stages {
+        stage('Clonar repositorio') {
+            steps {
+                git url: 'https://github.com/alejandroo-03/TRABAJO-PEPSA', branch: 'master'
+            }
+        }
+
+        stage('Prueba unitaria') {
+            steps {
+                script {
+                    echo "Instalando dependencias para pruebas..."
+                    sh '''
+                        python3 -m venv venv
+                        . venv/bin/activate
+                        pip install --upgrade pip
+                        pip install -r ApiBicis/web/requirements.txt
+                        pip install pytest
+                        pytest ApiBicis/web/test.py 
+                    '''
+                }
+            }
+        }
+
+
+        stage('Prueba detect secret') {
+            steps {
+                sh 'echo aqui se hace la prueba detect secret'
+            }
+        }
+
+        stage('Run SonarQube Scanner') {
+            steps {
+                script {
+                    // Ejecutar SonarQube Scanner
+                    sh 'echo aqui van las pruebas de sonarscanner'
+                }
+            }
+        }
+
+        stage('Run SCA ') {
+            steps {
+                script {
+                    // Ejecutar pruebas de seguridad de código 
+                    sh 'echo aqui van las pruebas sca'
+                }
+            }
+        }
+
+        stage('Docker Login') {
+            steps {
+                sh 'docker login -u  $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+            }
+        }
+        stage('Build Docker python'){
+            steps{
+                script{
+                    dockerImage= docker.build(registrypython, '-f ApiBicis/Dockerfile ApiBicis')
+                }
+            }
+        }
+        stage('Push Docker'){
+            steps{
+                script{
+                    dockerImage.push('latest')     
+                }    
+            }
+        }
+
+        stage('Scan Docker Image Python for Vulnerabilities') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'your-snyk-token-id', variable: 'SNYK_TOKEN')]) {
+                        sh '''
+                            npm install -g snyk
+                            export SNYK_TOKEN=${SNYK_TOKEN}
+                            snyk container test ${DOCKER_IMAGEPYTHON} --file=ApiBicis/Dockerfile --exclude-base-image-vulns || echo "Snyk found vulnerabilities, but continuing pipeline..."
+                            '''
+                    }
+                }
+            }
+        }
+        stage('Build Docker WAF'){
+            steps{
+                script{
+                    sh 'chmod +x ApiBicis/Apache/crearCertificado.sh'
+                    sh './ApiBicis/Apache/crearCertificado.sh'
+                    dockerImage= docker.build(registrywaf, "-f ApiBicis/Apache/Dockerfile ApiBicis/Apache")
+                }
+            }
+        }
+        
+
+        stage('Scan Docker Image Waf for Vulnerabilities') {
+            steps {
+                script {
+                    // Escanear la imagen Docker usando docker scan
+                    withCredentials([string(credentialsId: 'your-snyk-token-id', variable: 'SNYK_TOKEN')]) {
+                        sh '''
+                                npm install -g snyk
+                                export SNYK_TOKEN=${SNYK_TOKEN}
+                                snyk container test ${DOCKER_IMAGEWAF} --file=ApiBicis/Apache/Dockerfile --exclude-base-image-vulns || echo "Snyk found vulnerabilities, but continuing pipeline..."
+                                '''
+                    }
+                }
+            }
+        }
+
+        stage('Run Application with Docker Compose') {
+            steps {
+                script {
+                    // Ejecutar la aplicación con Docker Compose
+                    sh '''
+                        apt install docker-compose -y
+                        docker-compose -f ./ApiBicis/docker-compose.yml up -d
+                    '''
+                }
+            }
+        }
+        
+        stage('Vulnerability Scan') {
+            steps {
+                script {
+                    // Ejecutar escaneo para detectar vulnerabilidades en la aplicación desplegada
+                    sh 'echo aqui van las pruebas DAST'
+                }
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                script {
+                    // Detener los contenedores después de la prueba
+                    sh '''
+                        docker-compose down
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Limpiar y eliminar imágenes locales si es necesario
+            cleanWs()
+        }
+
+        success {
+            // Enviar notificación o realizar acciones después de la ejecución exitosa
+            echo 'Pipeline correcto!'
+        }
+
+        failure {
+            // Enviar notificación en caso de fallo
+            echo 'Pipeline fallo!'
+        }
+    }
+   }
+

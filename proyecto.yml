@@ -1,0 +1,224 @@
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secrets
+type: Opaque
+data:
+  db_root_user: ZGJfcm9vdA==
+  db_root_password: cm9vdHB3
+  db_user_username: dXNlcg==
+  db_user_password: dXNlcnB3
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: python-secrets
+type: Opaque
+data:
+  DB_USERNAME: dXNlcg==
+  DB_PASSWORD: dXNlcnB3
+  SECRET_KEY: eW91LXdpbGwtbmV2ZXItZ3Vlc3M=
+  WTF_CSRF_SECRET_KEY: Y3NyZl9rZXlfc2VjdXJl
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb
+spec:
+  selector:
+    app: mariadb
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+spec:
+  selector:
+    matchLabels:
+      app: mariadb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:10.3
+          env:
+            - name: MARIADB_DATABASE
+              value: DEATHBIKES
+            - name: MARIADB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: db_root_password
+          volumeMounts:
+            - name: mariadb-data
+              mountPath: /var/lib/mysql
+            - name: bicicletas-sql
+              mountPath: /docker-entrypoint-initdb.d/Bicicletas.sql
+              readOnly: true
+      volumes:
+        - name: mariadb-data
+          emptyDir: {}
+        - name: bicicletas-sql
+          hostPath:
+            path: /vagrant/Bicicletas.sql
+            type: File
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin
+spec:
+  selector:
+    app: phpmyadmin
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+spec:
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: phpmyadmin
+          env:
+            - name: PMA_ARBITRARY
+              value: "1"
+            - name: PMA_HOST
+              value: mariadb
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-api
+spec:
+  selector:
+    app: python-api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-api
+  template:
+    metadata:
+      labels:
+        app: python-api
+    spec:
+      containers:
+        - name: python-api
+          image: fernipeps/pepsapi:latest
+          env:
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_HOST
+              value: mariadb
+            - name: DB_DATABASE
+              value: DEATHBIKES
+            - name: HOST
+              value: "0.0.0.0"
+            - name: PORT
+              value: "8080"
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: python-secrets
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: python-secrets
+                  key: DB_PASSWORD
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: python-secrets
+                  key: SECRET_KEY
+            - name: WTF_CSRF_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: python-secrets
+                  key: WTF_CSRF_SECRET_KEY
+          volumeMounts:
+            - name: python-logs
+              mountPath: /var/log/api
+      volumes:
+        - name: python-logs
+          hostPath:
+            path: /var/log/api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-waf
+spec:
+  selector:
+    app: apache-waf
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 443
+      targetPort: 443
+      nodePort: 30443
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-waf
+spec:
+  selector:
+    matchLabels:
+      app: apache-waf
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: apache-waf
+    spec:
+      containers:
+        - name: apache-waf
+          image: fernipeps/pepswaf:latest
+          ports:
+            - containerPort: 443
+            - containerPort: 80
+          volumeMounts:
+            - name: apache-logs
+              mountPath: /var/log/apache2
+      volumes:
+        - name: apache-logs
+          hostPath:
+            path: /var/log/apache2
