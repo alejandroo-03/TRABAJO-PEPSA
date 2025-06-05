@@ -141,7 +141,7 @@ spec:
     spec:
       containers:
         - name: python-api
-          image: fernipeps/pepsapi:latest
+          image: ivanestudios/pepspython:latest
           env:
             - name: DB_PORT
               value: "3306"
@@ -211,7 +211,7 @@ spec:
     spec:
       containers:
         - name: apache-waf
-          image: fernipeps/pepswaf:latest
+          image: ivanestudios/pepswaf
           ports:
             - containerPort: 443
             - containerPort: 80
