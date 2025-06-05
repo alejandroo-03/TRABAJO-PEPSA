@@ -100,6 +100,7 @@ pipeline {
                     sh 'chmod +x ApiBicis/Apache/crearCertificado.sh'
                     sh './ApiBicis/Apache/crearCertificado.sh'
                     dockerImage= docker.build(registrywaf, "-f ApiBicis/Apache/Dockerfile ApiBicis/Apache")
+                    dockerImage.push('latest')  
                 }
             }
         }
@@ -132,7 +133,7 @@ pipeline {
             }
         }
         
-        stage('Vulnerability Scan') {
+         stage('Vulnerability Scan') {
             steps {
                 script {
                     // Ejecutar escaneo para detectar vulnerabilidades en la aplicación desplegada
@@ -170,4 +171,3 @@ pipeline {
         }
     }
    }
-
